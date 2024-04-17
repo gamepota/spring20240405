@@ -76,30 +76,20 @@ public class Controller24 {
         }
     }
 
-//    @GetMapping("sub3")
-//    public void method3(@ModelAttribute("customers") ArrayList<MyBean242> list) throws Exception {
-//        String sql = """
-//                SELECT  COUNT(DISTINCT Country)
-//                FROM Customers
-//                """;
-//
-//        Connection conn = dataSource.getConnection();
-//        Statement stmt = conn.createStatement();
-//        ResultSet rs = stmt.executeQuery(sql);
-//
-//        try (conn; stmt; rs) {
-//
-//
-//            while (rs.next()) {
-//
-//                String country = rs.getString(1);
-//
-//                MyBean242 data = new MyBean242();
-//
-//                data.setCountry(country);
-//
-//                list.add(data);
-//            }
-//        }
+    @GetMapping("sub3")
+    public void method3(Model model) throws Exception {
+        var list = new ArrayList<String>();
+        String sql = "SELECT DISTINCT Country FROM Customers";
+
+        Statement stmt = dataSource.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+
+        try (rs; stmt) {
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+        }
+        model.addAttribute("countryList", list);
+    }
 }
 

@@ -4,22 +4,12 @@
 <head>
     <title>Title</title>
 </head>
-<h3>고객 목록 과 나라</h3>
-<table>
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>country</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${customers}" varStatus="status" var="customer">
-        <tr>
-            <td>${status.count}</td>
-            <td>${customer.country}</td>
-        </tr>
+<body>
+<h3>고객이 있는 나라들</h3>
+<ul>
+    <c:forEach items="${countryList}" var="country">
+        <li>${country}</li>
     </c:forEach>
-    </tbody>
-</table>
+</ul>
 </body>
 </html>
