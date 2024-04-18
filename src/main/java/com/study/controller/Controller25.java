@@ -266,34 +266,35 @@ public class Controller25 {
 
     @GetMapping("sub8")
     public String method8(String search, Model model) throws SQLException {
-        var list = new ArrayList<MyBean258>();
+        var list = new ArrayList<MyBean258Employee>();
         String sql = """
                 SElECT *
                 FROM Employees
                 WHERE LastName LIKE ?
-                OR FirstName LIKE ?        
+                   OR FirstName LIKE ?        
                 """;
-        String keyword = "%" + search + "%";
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, keyword);
-        pstmt.setString(2, keyword);
+        pstmt.setString(1, "%" + search + "%");
+        pstmt.setString(2, "%" + search + "%");
         ResultSet rs = pstmt.executeQuery();
         try (rs; conn; pstmt) {
             while (rs.next()) {
-                MyBean258 obj = new MyBean258();
+                MyBean258Employee obj = new MyBean258Employee();
+
                 obj.setId(rs.getInt(1));
                 obj.setLastName(rs.getString(2));
                 obj.setFirstName(rs.getString(3));
                 obj.setBirthDate(rs.getString(4));
                 obj.setPhoto(rs.getString(5));
                 obj.setNote(rs.getString(6));
+
                 list.add(obj);
             }
         }
         model.addAttribute("prevSearch", search);
         model.addAttribute("employeesList", list);
-        return "sub8employeesList";
+        return "main25/sub8EmployeesList";
     }
 
 

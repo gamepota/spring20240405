@@ -23,32 +23,32 @@
 </form>
 <hr>
 
-<c:if test="${empty employeesList}" var="emptyEmployeesList">
+<c:if test="${empty employeesList}" var="emptyList">
     <p>조회된 사원이 없습니다.</p>
 </c:if>
 
-<c:if test="${not emptyEmployeesList}">
+<c:if test="${not emptyList}">
 
     <table>
         <thead>
         <tr>
             <th>id</th>
-            <th>name</th>
-            <th>supplier id</th>
-            <th>category id</th>
-            <th>unit</th>
-            <th>price</th>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>birth</th>
+            <th>photo</th>
+            <th>notes</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${employeesList}" var="employee">
             <tr>
                 <td>${employee.id}</td>
-                <td>${employee.LastName}</td>
-                <td>${employee.FirstName}</td>
-                <td>${employee.BirthDate}</td>
-                <td>${employee.Photo}</td>
-                <td>${employee.Note}</td>
+                <td>${employee.lastName}</td>
+                <td>${employee.firstName}</td>
+                <td>${employee.birthDate}</td>
+                <td>${employee.photo}</td>
+                <td>${employee.note}</td>
             </tr>
         </c:forEach>
         </tbody>
