@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -22,9 +23,8 @@ public class Controller27 {
     private DataSource dataSource;
 
     @GetMapping("sub1")
-    public String sub1(Integer page, Model model) throws SQLException {
+    public String sub1(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model) throws SQLException {
         int offset = (page - 1) * 10;
-
 
         String sql = """
                 SELECT *
@@ -33,9 +33,10 @@ public class Controller27 {
                 LIMIT ?, 10
                 """;
 
-        var list = new ArrayList<MyBean254Customer>();
-
         Connection conn = dataSource.getConnection();
+
+
+        var list = new ArrayList<MyBean254Customer>();
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, offset);
         ResultSet rs = pstmt.executeQuery();
