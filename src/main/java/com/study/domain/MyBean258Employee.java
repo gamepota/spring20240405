@@ -9,5 +9,5 @@ public class MyBean258Employee {
     private String FirstName;
     private String BirthDate;
     private String Photo;
-    private String Note;
+    private String Notes;
 }

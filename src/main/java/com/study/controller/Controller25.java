@@ -287,7 +287,7 @@ public class Controller25 {
                 obj.setFirstName(rs.getString(3));
                 obj.setBirthDate(rs.getString(4));
                 obj.setPhoto(rs.getString(5));
-                obj.setNote(rs.getString(6));
+                obj.setNotes(rs.getString(6));
 
                 list.add(obj);
             }
