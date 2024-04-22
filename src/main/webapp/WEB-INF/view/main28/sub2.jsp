@@ -33,7 +33,7 @@
         <input type="text" name="lastName">
     </div>
     <div>성
-        <input type="text" name="fristName">
+        <input type="text" name="firstName">
     </div>
     <div>생년월일
         <input type="date" name="birthDate">
@@ -43,7 +43,7 @@
         <input type="text" name="photo">
     </div>
     <div>특이사항
-        <input type="text" name="note">
+        <textarea type="text" name="notes"></textarea>
     </div>
     <div>
         <input type="submit" value="등록">
