@@ -1,7 +1,7 @@
 package com.study.controller;
 
 import com.study.domain.MyBean254Customer;
-import com.study.domain.MyBean256ProductList;
+import com.study.domain.MyBean256Product;
 import com.study.domain.MyBean261Orders;
 import com.study.domain.MyBean263Category;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,7 +135,7 @@ public class Controller26 {
                     ORDER BY CategoryID, Price ASC
                     """;
 
-            var productsList = new ArrayList<MyBean256ProductList>();
+            var productsList = new ArrayList<MyBean256Product>();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             for (int i = 0; i < cid.length; i++) {
                 pstmt.setString(i + 1, cid[i]);
@@ -143,7 +143,7 @@ public class Controller26 {
             ResultSet rs2 = pstmt.executeQuery();
             try (rs2; pstmt) {
                 while (rs2.next()) {
-                    MyBean256ProductList row = new MyBean256ProductList();
+                    MyBean256Product row = new MyBean256Product();
                     row.setId(rs2.getInt(1));
                     row.setName(rs2.getString(2));
                     row.setSupplierID(rs2.getInt(3));

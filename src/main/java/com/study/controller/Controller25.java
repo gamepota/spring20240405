@@ -191,7 +191,7 @@ public class Controller25 {
 
     @GetMapping("sub6")
     public String method6(String search, Model model) throws SQLException {
-        var list = new ArrayList<MyBean256ProductList>();
+        var list = new ArrayList<MyBean256Product>();
         String sql = """
                 SELECT * FROM Products
                 WHERE ProductName LIKE ?
@@ -212,7 +212,7 @@ public class Controller25 {
                 String unit = rs.getString(5);
                 String price = rs.getString(6);
 
-                MyBean256ProductList obj = new MyBean256ProductList();
+                MyBean256Product obj = new MyBean256Product();
                 obj.setId(id);
                 obj.setName(name);
                 obj.setSupplierID(supplierID);
